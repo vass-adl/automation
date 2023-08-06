@@ -1,13 +1,9 @@
 # Automation
 
-## iniciar tsconfig.json
+## Correr la automatización
 
 ```bash
-npm run tsc -- --init
+npm start
 ```
 
-## ejecutar TypeScript
 
-```bash
-npm run ts-node -- src/index.ts
-```
