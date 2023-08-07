@@ -6,6 +6,8 @@ import BavvMB from './entidades/BAVV/Bavv-mb.js';
 import BavvPB from './entidades/BAVV/Bavv-pb.js';
 import BpopMB from './entidades/BPOP/Bpop-mb.js';
 import BpopPB from './entidades/BPOP/Bpop-pb.js';
+import BoccMB from './entidades/BOCC/Bocc-mb.js';
+import BoccPB from './entidades/BOCC/Bocc-pb.js';
 
 (async () => {
   // Create a new browser instance
@@ -26,9 +28,8 @@ import BpopPB from './entidades/BPOP/Bpop-pb.js';
   await new BavvPB().screenshot(page);
   await new BpopMB().screenshot(page);
   await new BpopPB().screenshot(page);
-  
-  //const boccMB = new BoccMB();
-  //const boccPB = new BoccPB();
+  await new BoccMB().screenshot(page);
+  await new BoccPB().screenshot(page);
 
   await browser.close();
 
