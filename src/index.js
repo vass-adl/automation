@@ -2,6 +2,8 @@ import puppeteer from 'puppeteer';
 import { login } from './util/Login.js';
 import BbogMB from './entidades/BBOG/Bbog-mb.js';
 import BbogPB from './entidades/BBOG/Bbog-pb.js';
+import BavvMB from './entidades/BAVV/Bavv-mb.js';
+import BavvPB from './entidades/BAVV/Bavv-pb.js';
 
 (async () => {
   // Create a new browser instance
@@ -16,8 +18,10 @@ import BbogPB from './entidades/BBOG/Bbog-pb.js';
 
   login(page);
   
-  const bbogMB = new BbogMB();
-  const bbogPB = new BbogPB();
+  await new BbogMB().screenshot(page);
+  await new BbogPB().screenshot(page);
+  await new BavvMB().screenshot(page);
+  await new BavvPB().screenshot(page);
   //const bavvMB = new BavvMB();
   //const bavvPB = new BavvPB();
   //const bpopMB = new BpopMB();
@@ -25,14 +29,7 @@ import BbogPB from './entidades/BBOG/Bbog-pb.js';
   //const boccMB = new BoccMB();
   //const boccPB = new BoccPB();
 
-  await bbogMB.screenshot(page);
-  await bbogPB.screenshot(page);
-  //await bavvMB.screenshot(page);
-  //await bavvPB.screenshot(page);
-  //await bpopMB.screenshot(page);
-  //await bpopPB.screenshot(page);
-  //await boccMB.screenshot(page);
-  //await boccPB.screenshot(page);
+
 
   await browser.close();
 

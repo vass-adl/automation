@@ -20,7 +20,7 @@ export default class FilterAppName {
 
     await inputElement.updateValue(env.operador, env.operator_is);
     await clickElement.click(env.operator_is_option_1);
-
+    
     await inputElement.updateValue(env.input_value, this.appName);
     await clickElement.click(env.btn_save);
   }
@@ -29,4 +29,16 @@ export default class FilterAppName {
     const clickElement = new ClickElement(page);
     await clickElement.click(env.kibana_close_filter);
   }
+
+  async screenshot(page, fileName) {
+    try {
+      await page.waitForSelector("#my-element-manuel");
+    } catch (error) {
+      console.log('Tomando screenshot: ' +  `${env.path_screenshot}/${fileName}`);
+    }
+    //const path = this.pathScreenshots + fileName;
+    const path = `${env.path_screenshot}/${fileName}`;
+    await page.screenshot({ path });
+  }
+
 }

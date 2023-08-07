@@ -22,6 +22,8 @@ const operator_is_option_1 = process.env.OPERATOR_IS_OPTION_1 || '';
 
 const kibana_close_filter = process.env.KIBANA_CLOSE_FILTER || '';
 
+const path_screenshot = process.env.PATH_SCREENSHOT || '';
+
 export const env = {
   url,
   user,
@@ -38,5 +40,6 @@ export const env = {
   app_name_keyword_bbog_mb,
   operator_is,
   operator_is_option_1,
-  kibana_close_filter
+  kibana_close_filter,
+  path_screenshot
 }

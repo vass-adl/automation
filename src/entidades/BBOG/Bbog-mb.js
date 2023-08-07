@@ -10,15 +10,10 @@ export default class BbogMB {
   }
 
   async screenshot(page) {
-    this.filterAppName.run(page);
+    await this.filterAppName.run(page);
 
-    try {
-      await page.waitForSelector("#my-element-manuel");
-    } catch (error) {
+    await this.filterAppName.screenshot(page, this.fileName);
 
-    }
-
-    await page.screenshot({ path: this.fileName });
     await this.filterAppName.closeFilter(page);
   }
 }

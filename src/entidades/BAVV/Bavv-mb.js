@@ -1,9 +1,9 @@
 import FilterAppName from '../../util/FilterAppName.js';
 
-export default class BbogPB {
-
-  appName = 'adl-bbog-pb';
-  fileName = 'screenshot-adl-bbog-pb.jpg';
+export default class BavvMB {
+  
+  appName = 'adl-bavv-mb';
+  fileName = 'screenshot-adl-bavv-mb.jpg';
 
   constructor() {
     this.filterAppName = new FilterAppName(this.appName);
@@ -16,4 +16,5 @@ export default class BbogPB {
 
     await this.filterAppName.closeFilter(page);
   }
+
 }
