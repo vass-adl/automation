@@ -36,7 +36,6 @@ export default class FilterAppName {
     } catch (error) {
       console.log('Tomando screenshot: ' +  `${env.path_screenshot}/${fileName}`);
     }
-    //const path = this.pathScreenshots + fileName;
     const path = `${env.path_screenshot}/${fileName}`;
     await page.screenshot({ path });
   }

@@ -20,17 +20,27 @@ import BoccPB from './entidades/BOCC/Bocc-pb.js';
   const pages = await browser.pages();
   const page = pages[0];
 
-  login(page);
-  
-  await new BbogMB().screenshot(page);
-  await new BbogPB().screenshot(page);
-  await new BavvMB().screenshot(page);
-  await new BavvPB().screenshot(page);
-  await new BpopMB().screenshot(page);
-  await new BpopPB().screenshot(page);
-  await new BoccMB().screenshot(page);
-  await new BoccPB().screenshot(page);
+  await login(page);
 
+  const arg = process.argv.splice(2);
+
+  const canal = arg[0];
+  const servicio = arg[1];
+
+  if (!canal && !servicio) {
+    await new BbogMB().screenshot(page);
+    await new BbogPB().screenshot(page);
+    await new BavvMB().screenshot(page);
+    await new BavvPB().screenshot(page);
+    await new BpopMB().screenshot(page);
+    await new BpopPB().screenshot(page);
+    await new BoccMB().screenshot(page);
+    await new BoccPB().screenshot(page);
+  } else {
+    console.log(`canal: ${canal}`);
+    console.log(`servicio: ${servicio}`);
+  }
+  
   await browser.close();
 
 })();
