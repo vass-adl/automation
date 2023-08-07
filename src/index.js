@@ -11,7 +11,6 @@ import BbogPB from './entidades/BBOG/Bbog-pb.js';
     args: ['--start-maximized']
   });
 
-  // Navigate to the Google homepage
   const pages = await browser.pages();
   const page = pages[0];
 
