@@ -1,8 +1,7 @@
 import puppeteer from 'puppeteer';
-import { env } from './util/init.js';
-import InputElement from './util/InputElement.js';
-import ClickElement from './util/ClickElement.js';
-import Screenshot from './util/Screenshot.js';
+import { login } from './util/Login.js';
+import BbogMB from './entidades/BBOG/Bbog-mb.js';
+import BbogPB from './entidades/BBOG/Bbog-pb.js';
 
 (async () => {
   // Create a new browser instance
@@ -16,36 +15,26 @@ import Screenshot from './util/Screenshot.js';
   const pages = await browser.pages();
   const page = pages[0];
 
-  await page.goto(env.url);
-
-  const inputElement = new InputElement(page);
-  const clickElement = new ClickElement(page);
-  const screenshot = new Screenshot(page);
-
-  await inputElement.updateValue(env.input_user, env.user);
-  await inputElement.updateValueAndEnter(env.input_password, env.password);
-
-  await clickElement.click(env.btn_api_calls);
-  await clickElement.click(env.btn_add_filter);
-
-  await inputElement.updateValue(env.field, 'app_name.keyword');
+  login(page);
   
-  await clickElement.click(env.operador_click);
+  const bbogMB = new BbogMB();
+  const bbogPB = new BbogPB();
+  //const bavvMB = new BavvMB();
+  //const bavvPB = new BavvPB();
+  //const bpopMB = new BpopMB();
+  //const bpopPB = new BpopPB();
+  //const boccMB = new BoccMB();
+  //const boccPB = new BoccPB();
 
-  await inputElement.updateValue(env.operador, env.operator_is);
+  await bbogMB.screenshot(page);
+  await bbogPB.screenshot(page);
+  //await bavvMB.screenshot(page);
+  //await bavvPB.screenshot(page);
+  //await bpopMB.screenshot(page);
+  //await bpopPB.screenshot(page);
+  //await boccMB.screenshot(page);
+  //await boccPB.screenshot(page);
 
-  await clickElement.click(env.operator_is_option_1);
-
-  await inputElement.updateValue(env.input_value, env.app_name_keyword_bbog_mb);
-
-  await clickElement.click(env.btn_save);
-
-  ///await clickElement.click(kibana_close_filter);
-
-  async function callback() {
-    await browser.close();
-  }
-
-  await screenshot.run('screenshot-adl-bbog-mb.jpg', callback);
+  await browser.close();
 
 })();
