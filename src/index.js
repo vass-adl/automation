@@ -20,14 +20,13 @@ import BoccPB from './entidades/BOCC/Bocc-pb.js';
   const pages = await browser.pages();
   const page = pages[0];
 
-  await login(page);
-
   const arg = process.argv.splice(2);
 
   const canal = arg[0];
   const servicio = arg[1];
 
   if (!canal && !servicio) {
+    await login(page);
     await new BbogMB().screenshot(page);
     await new BbogPB().screenshot(page);
     await new BavvMB().screenshot(page);
@@ -40,6 +39,7 @@ import BoccPB from './entidades/BOCC/Bocc-pb.js';
 
     switch (canal) {
       case 'bbog-mb':
+        await login(page);
         const bbogMB = new BbogMB();
         servicio ?
           await bbogMB.screenshotService(page, servicio):
@@ -47,6 +47,7 @@ import BoccPB from './entidades/BOCC/Bocc-pb.js';
         break;
       
       case 'bbog-pb':
+        await login(page);
         const bbogPB = new BbogPB();
         servicio ?
           await bbogPB.screenshotService(page, servicio):
@@ -54,6 +55,7 @@ import BoccPB from './entidades/BOCC/Bocc-pb.js';
         break;
 
       case 'bavv-mb':
+        await login(page);
         const bavvMB = new BavvMB();
         servicio ?
           await bavvMB.screenshotService(page, servicio):
@@ -61,18 +63,34 @@ import BoccPB from './entidades/BOCC/Bocc-pb.js';
         break;
 
       case 'bavv-pb':
+        await login(page);
         const bavvPB = new BavvPB();
         servicio ?
           await bavvPB.screenshotService(page, servicio):
           await bavvPB.screenshot(page);
         break;
+
+      case 'bpop-mb':
+        await login(page);
+        const bpopMB = new BpopMB();
+        servicio ?
+          await bpopMB.screenshotService(page, servicio):
+          await bpopMB.screenshot(page);
+        break;
+
+      case 'bpop-pb':
+        await login(page);
+        const bpopPB = new BpopPB();
+        servicio ?
+          await bpopPB.screenshotService(page, servicio):
+          await bpopPB.screenshot(page);
+        break;
     
       default:
+        console.log(`canal desconocido: ${canal} `);
         break;
     }
 
-    //console.log(`canal: ${canal}`);
-    //console.log(`servicio: ${servicio}`);
   }
   
   await browser.close();
