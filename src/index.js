@@ -54,6 +54,17 @@ import BoccPB from './entidades/BOCC/Bocc-pb.js';
         break;
 
       case 'bavv-mb':
+        const bavvMB = new BavvMB();
+        servicio ?
+          await bavvMB.screenshotService(page, servicio):
+          await bavvMB.screenshot(page);
+        break;
+
+      case 'bavv-pb':
+        const bavvPB = new BavvPB();
+        servicio ?
+          await bavvPB.screenshotService(page, servicio):
+          await bavvPB.screenshot(page);
         break;
     
       default:
