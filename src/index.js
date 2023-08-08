@@ -85,6 +85,22 @@ import BoccPB from './entidades/BOCC/Bocc-pb.js';
           await bpopPB.screenshotService(page, servicio):
           await bpopPB.screenshot(page);
         break;
+
+      case 'bocc-mb':
+        await login(page);
+        const boccMB = new BoccMB();
+        servicio ?
+          await boccMB.screenshotService(page, servicio):
+          await boccMB.screenshot(page);
+        break;
+
+      case 'bocc-pb':
+        await login(page);
+        const boccPB = new BoccPB();
+        servicio ?
+          await boccPB.screenshotService(page, servicio):
+          await boccPB.screenshot(page);
+        break;
     
       default:
         console.log(`canal desconocido: ${canal} `);
