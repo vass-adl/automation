@@ -40,12 +40,17 @@ import BoccPB from './entidades/BOCC/Bocc-pb.js';
 
     switch (canal) {
       case 'bbog-mb':
+        const bbogMB = new BbogMB();
         servicio ?
-          await new BbogMB().screenshotService(page, servicio):
-          await new BbogMB().screenshot(page);
+          await bbogMB.screenshotService(page, servicio):
+          await bbogMB.screenshot(page);
         break;
       
       case 'bbog-pb':
+        const bbogPB = new BbogPB();
+        servicio ?
+          await bbogPB.screenshotService(page, servicio):
+          await bbogPB.screenshot(page);
         break;
 
       case 'bavv-mb':
