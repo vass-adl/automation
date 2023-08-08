@@ -37,8 +37,26 @@ import BoccPB from './entidades/BOCC/Bocc-pb.js';
     await new BoccMB().screenshot(page);
     await new BoccPB().screenshot(page);
   } else {
-    console.log(`canal: ${canal}`);
-    console.log(`servicio: ${servicio}`);
+
+    switch (canal) {
+      case 'bbog-mb':
+        servicio ?
+          await new BbogMB().screenshotService(page, servicio):
+          await new BbogMB().screenshot(page);
+        break;
+      
+      case 'bbog-pb':
+        break;
+
+      case 'bavv-mb':
+        break;
+    
+      default:
+        break;
+    }
+
+    //console.log(`canal: ${canal}`);
+    //console.log(`servicio: ${servicio}`);
   }
   
   await browser.close();

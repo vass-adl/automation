@@ -9,7 +9,8 @@ const input_user = process.env.INPUT_USER || '';
 const input_password = process.env.INPUT_PASSWORD || '';
 const btn_api_calls = process.env.BTN_API_CALLS || '';
 
-const btn_add_filter = process.env.KIBANA_BTN_ADD_FILTER || '';
+const btn_add_filter = process.env.KIBANA_BTN_ADD_FILTER_APP_NAME || '';
+const btn_add_filter_2 = process.env.KIBANA_BTN_ADD_FILTER_API_NAME || '';
 const field = process.env.KIBANA_FIELD || '';
 const operador = process.env.KIBANA_OPERATOR || '';
 const operador_click = process.env.KIBANA_OPERATOR_CLICK || '';
@@ -32,6 +33,7 @@ export const env = {
   input_password,
   btn_api_calls,
   btn_add_filter,
+  btn_add_filter_2,
   field,
   operador,
   operador_click,

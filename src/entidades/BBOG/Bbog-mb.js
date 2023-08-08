@@ -1,9 +1,10 @@
 import FilterAppName from '../../util/FilterAppName.js';
+import FilterService from '../../util/FilterService.js';
 
 export default class BbogMB {
 
   appName = 'adl-bbog-mb';
-  fileName = 'screenshot-adl-bbog-mb.jpg';
+  fileName = 'adl-bbog-mb.jpg';
 
   constructor() {
     this.filterAppName = new FilterAppName(this.appName);
@@ -11,9 +12,15 @@ export default class BbogMB {
 
   async screenshot(page) {
     await this.filterAppName.run(page);
-
     await this.filterAppName.screenshot(page, this.fileName);
-
     await this.filterAppName.closeFilter(page);
+  }
+
+  async screenshotService(page, serviceName) {
+    await this.filterAppName.run(page);
+    const filterService = new FilterService(serviceName);
+    await filterService.run(page);
+    const fileName = `${serviceName}_${this.fileName}`;
+    await filterService.screenshot(page, fileName);
   }
 }
